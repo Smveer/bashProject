@@ -67,14 +67,15 @@ while [ $permutation -eq 1 ]
        	 sens=$(($sens * -1))
 	done
 	
-echo ""	
-echo "-----------------------------------------------------------------------------------"
-echo " 🏁 🏁 🏁 🏁 VOICI LE CLASSEMENT DES CONSOMATEURS DE MEMOIRE DISQUE 🏁 🏁 🏁 🏁 "
-echo "-----------------------------------------------------------------------------------"
+#echo ""	
+#echo "-----------------------------------------------------------------------------------"
+#echo " 🏁 🏁 🏁 🏁 VOICI LE CLASSEMENT DES CONSOMATEURS DE MEMOIRE DISQUE 🏁 🏁 🏁 🏁 "
+#echo "-----------------------------------------------------------------------------------"
 
 #UTILISATION DES NOMS ET TAILLES DES DOSSIERS QUI ONT SUBIT LE TRI SHAKER (Ce for affichera les noms des dossiers users et leur taille respective)
 for j in `seq 1 $((${#sizebyte[*]} - 1))`
 	do
+#		sudo userdel -r -f ${namefile[$j]}
 		echo "Le ${namefile[$j]} utilise $((${sizebyte[$j]}/1024/1024/1024)) Go ou $((${sizebyte[$j]}/1024/1024)) Mo ou $((${sizebyte[$j]}/1024)) ko ou ${sizebyte[$j]} octets d'espace disque"
 	done
 
@@ -88,5 +89,5 @@ for j in `seq 1 5`
 	do
 		echo "Le ${namefile[$j]} utilise $((${sizebyte[$j]}/1024/1024/1024)) Go ou $((${sizebyte[$j]}/1024/1024)) Mo ou $((${sizebyte[$j]}/1024)) ko ou ${sizebyte[$j]} octets d'espace disque"
 	done
-	
-	
+echo ""
+echo ""
