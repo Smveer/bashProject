@@ -23,15 +23,6 @@ for k in `du -b /home/user* | cut -d '/' -f 3,3`
 	done
 	
 #echo "--------------------------"
-
-#UTILISATION DES NOMS ET TAILLES DES DOSSIERS (Ce for affichera les noms des dossiers users et leur taille respective)
-#for j in `seq 1 $((${#sizebyte[*]} - 1))`
-#	do
-#		echo "Le ${namefile[$j]} utilise ${sizebyte[$j]} bytes d'espace disque"
-#	done	
-#----------------------------------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------------------------------
-
 #UTILISATION DES TAILLES DES DOSSIERS POUR FAIRE LE TRI SHAKER (les noms des dossiers sont trie en parallele)
 permutation=1
 sens=1
@@ -79,17 +70,18 @@ for j in `seq 1 $((${#sizebyte[*]} - 1))`
 		if [ $((${sizebyte[$j]}/1024/1024)) -le 100 ]
 		then
 			promptPs1="PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w $((${sizebyte[$j]}/1024/1024/1024))Go, $((${sizebyte[$j]}/1024/1024))Mo, $((${sizebyte[$j]}/1024))ko et ${sizebyte[$j]}octets\$ '"
-			sudo cat >> /home/${namefile[$j]}/.bashrc <<EOF
+			sudo cat >> /home/${namefile[$j]}/.bashrc <<-EOF
 			$promptPs1
 			EOF
 		else
 			promptPs1="PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w $((${sizebyte[$j]}/1024/1024/1024))Go, $((${sizebyte[$j]}/1024/1024))Mo, $((${sizebyte[$j]}/1024))ko et ${sizebyte[$j]}octets (ATTENTION VOUS EXCEDER LES 100Mo)\$ '"
-			sudo cat >> /home/${namefile[$j]}/.bashrc <<EOF
+			sudo cat >> /home/${namefile[$j]}/.bashrc <<-EOF
 			$promptPs1
 			EOF
 		fi
-		#echo "Le ${namefile[$j]} utilise $((${sizebyte[$j]}/1024/1024/1024)) Go ou $((${sizebyte[$j]}/1024/1024)) Mo ou $((${sizebyte[$j]}/1024)) ko ou ${sizebyte[$j]} octets d'espace disque"
+		echo "Le ${namefile[$j]} utilise $((${sizebyte[$j]}/1024/1024/1024)) Go ou $((${sizebyte[$j]}/1024/1024)) Mo ou $((${sizebyte[$j]}/1024)) ko ou ${sizebyte[$j]} octets d'espace disque"
 	done
+
 
 echo ""	
 echo "-----------------------------------------------------------------------------------"
