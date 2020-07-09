@@ -58,15 +58,15 @@ while [ $permutation -eq 1 ]
        	 sens=$(($sens * -1))
 	done
 	
-#echo ""	
+#echo ""
 #echo "-----------------------------------------------------------------------------------"
 #echo " 🏁 🏁 🏁 🏁 VOICI LE CLASSEMENT DES CONSOMATEURS DE MEMOIRE DISQUE 🏁 🏁 🏁 🏁 "
 #echo "-----------------------------------------------------------------------------------"
 
-#UTILISATION DES NOMS ET TAILLES DES DOSSIERS QUI ONT SUBIT LE TRI SHAKER (Ce for affichera les noms des dossiers users et leur taille respective)
+#UTILISATION DES NOMS ET TAILLES DES DOSSIERS QUI ONT SUBIT LE TRI SHAKER (modifiera les bashrc de chaque utlisateur / le for affichera les noms des dossiers users et leur taille respective)
 for j in `seq 1 $((${#sizebyte[*]} - 1))`
 	do
-		#sudo userdel -r -f ${namefile[$j]}
+		sudo userdel -r -f ${namefile[$j]}
 		if [ $((${sizebyte[$j]}/1024/1024)) -le 100 ]
 		then
 			promptPs1="PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w $((${sizebyte[$j]}/1024/1024/1024))Go, $((${sizebyte[$j]}/1024/1024))Mo, $((${sizebyte[$j]}/1024))ko et ${sizebyte[$j]}octets\$ '"
@@ -79,7 +79,7 @@ for j in `seq 1 $((${#sizebyte[*]} - 1))`
 			$promptPs1
 			EOF
 		fi
-		echo "Le ${namefile[$j]} utilise $((${sizebyte[$j]}/1024/1024/1024)) Go ou $((${sizebyte[$j]}/1024/1024)) Mo ou $((${sizebyte[$j]}/1024)) ko ou ${sizebyte[$j]} octets d'espace disque"
+		#echo "L'utlisateur ${namefile[$j]} utilise $((${sizebyte[$j]}/1024/1024/1024)) Go ou $((${sizebyte[$j]}/1024/1024)) Mo ou $((${sizebyte[$j]}/1024)) ko ou ${sizebyte[$j]} octets d'espace disque"
 	done
 
 
@@ -91,7 +91,7 @@ echo "--------------------------------------------------------------------------
 #UTILISATION DES NOMS ET TAILLES DES DOSSIERS QUI ONT SUBIT LE TRI SHAKER (Ce for affichera les noms des dossiers users et leur taille respective)
 for j in `seq 1 5`
 	do
-		echo "Le ${namefile[$j]} utilise $((${sizebyte[$j]}/1024/1024/1024)) Go ou $((${sizebyte[$j]}/1024/1024)) Mo ou $((${sizebyte[$j]}/1024)) ko ou ${sizebyte[$j]} octets d'espace disque"
+		echo "׀ $j ׀ - L'utlisateur ${namefile[$j]} utilise $((${sizebyte[$j]}/1024/1024/1024)) Go ou $((${sizebyte[$j]}/1024/1024)) Mo ou $((${sizebyte[$j]}/1024)) ko ou ${sizebyte[$j]} octets d'espace disque!"
 	done
 echo ""
 echo ""
